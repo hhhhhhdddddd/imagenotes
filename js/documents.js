@@ -1,0 +1,41 @@
+familyDocs.documents = (function() {
+
+    function _findContainers() {
+        return document.getElementsByClassName("doccontainer");
+    }
+
+    function _eachDocContainer(fun) {
+        var containers = document.getElementsByClassName("doccontainer");
+        for (var i = 0; i < containers.length; i++) {
+            fun(containers[i]);
+        }
+    }
+
+    return {
+        create : function() {
+            var documents = Object.create(null);
+            familyDocs.list.init(documents);
+
+            documents.loadFromDatabase = function() {
+                var that = this;
+                familyDocs.ajax.getDocumentsNames(function onSuccess(responseText) {
+                    var docNames = responseText.split(",");
+                    var it = familyDocs.list.createIterator(docNames);
+                    familyDocs.ajax.getDocuments(it, function processElement(docName, docJson) {
+                        var doc = familyDocs.doc.create(docJson);
+                        that.add(docName, doc);
+                        document.body.appendChild(doc.buildNode());
+                    }, function onFinished() {
+                        // Rien
+                    });
+                }, function onError() {
+                    console.log("loadFromDatabase - Error: ajax.getDocumentsNames");
+                }, function onFinished() {
+                    console.log("loadFromDatabase - Finished: ajax.getDocumentsNames");
+                });
+            };
+
+            return documents;
+        }
+    };
+})();

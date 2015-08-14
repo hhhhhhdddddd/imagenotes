@@ -1,0 +1,4 @@
+PerlSetVar AuthFile /familydocs/admin/htpasswd.txt
+AuthName "Acces Restreint"
+AuthType Basic
+require valid-user
