@@ -12,6 +12,10 @@ familyDocs.ajax = (function() {
             return _source + service + "?" + name + "=" + value;
         },
 
+        findRequestValue : function(request) {
+            return request.split("=")[1];
+        },
+
         buildGetRequest : function(service) {
             return _source + service;
         },
@@ -42,13 +46,23 @@ familyDocs.ajax = (function() {
             httpRequest.send();
         },
 
-        getDocuments : function(elements, processElement, onFinished) {
-            this.processIterator(elements, _service.getdocument, "docname", function getValue(docName) {
-                return docName;
-            }, processElement, onFinished);
+        getDocuments : function(imgNames, processElement, onFinished) {
+            var requests = [];
+            imgNames.forEach(function(imgNames) {
+                var request = familyDocs.ajax.buildGetValueRequest(_service.getdocument, "docname", imgNames);
+                requests.push(request);
+                console.log("req: " + request);
+            });
+
+            this.processIterator(requests, function onSuccess(request, responseText) {
+                var reqval = familyDocs.ajax.findRequestValue(request);
+                console.log("reqval: " + reqval);
+
+                processElement(reqval, responseText);
+            }, onFinished, null);
         },
 
-        processIterator : function(elements, service, name, getValue, processElement, onFinished) {
+        processIterator : function(requests, onSuccess, onFinished, onError) {
 
             function createIterator(anArray) {
                 var iterator = Object.create(null);
@@ -72,10 +86,9 @@ familyDocs.ajax = (function() {
                     return;
                 }
 
-                var itElement = iterator.next();
-                var request = familyDocs.ajax.buildGetValueRequest(service, name, getValue(itElement));
-                familyDocs.ajax.getRequest(request, function onSuccess(responseText) {
-                    processElement(itElement, responseText);
+                var request = iterator.next();
+                familyDocs.ajax.getRequest(request, function fullOnSuccess(responseText) {
+                    onSuccess(request, responseText);
 
                     processIteratorAux();
                 }, function onError() {
@@ -85,7 +98,7 @@ familyDocs.ajax = (function() {
                 });
             }
 
-            var iterator = createIterator(elements);
+            var iterator = createIterator(requests);
             processIteratorAux();
         }
     };
