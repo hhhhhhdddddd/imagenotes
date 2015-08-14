@@ -54,7 +54,7 @@ familyDocs.ajax = (function() {
                 console.log("req: " + request);
             });
 
-            this.processIterator(requests, function onSuccess(request, responseText) {
+            this.chainRequests(requests, function onSuccess(request, responseText) {
                 var reqval = familyDocs.ajax.findRequestValue(request);
                 console.log("reqval: " + reqval);
 
@@ -62,7 +62,7 @@ familyDocs.ajax = (function() {
             }, onFinished, null);
         },
 
-        processIterator : function(requests, onSuccess, onFinished, onError) {
+        chainRequests : function(requests, onSuccess, onFinished, onError) {
 
             function createIterator(anArray) {
                 var iterator = Object.create(null);
@@ -80,7 +80,7 @@ familyDocs.ajax = (function() {
                 return iterator;
             }
 
-            function processIteratorAux() {
+            function chainRequestsAux() {
                 if (! iterator.hasNext()) {
                     onFinished();
                     return;
@@ -90,16 +90,16 @@ familyDocs.ajax = (function() {
                 familyDocs.ajax.getRequest(request, function fullOnSuccess(responseText) {
                     onSuccess(request, responseText);
 
-                    processIteratorAux();
+                    chainRequestsAux();
                 }, function onError() {
-                    console.log("_processIterator - Ajax Error: " + request);
+                    console.log("_chainRequests - Ajax Error: " + request);
                 }, function onFinished() {
 
                 });
             }
 
             var iterator = createIterator(requests);
-            processIteratorAux();
+            chainRequestsAux();
         }
     };
 })();
