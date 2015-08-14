@@ -28,22 +28,6 @@ familyDocs.list = (function() {
                     fun(this._data[key]);
                 }
             };
-        },
-
-        createIterator : function (anArray) {
-            var iterator = Object.create(null);
-            iterator.position = 0;
-            iterator.list = anArray;
-
-            iterator.hasNext = function() {
-                return this.position < this.list.length;
-            };
-            
-            iterator.next = function() {
-                return this.list[this.position++];
-            };
-
-            return iterator;
         }
     };
 

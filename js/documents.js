@@ -20,8 +20,7 @@ familyDocs.documents = (function() {
                 var that = this;
                 familyDocs.ajax.getDocumentsNames(function onSuccess(responseText) {
                     var docNames = responseText.split(",");
-                    var it = familyDocs.list.createIterator(docNames);
-                    familyDocs.ajax.getDocuments(it, function processElement(docName, docJson) {
+                    familyDocs.ajax.getDocuments(docNames, function processElement(docName, docJson) {
                         var doc = familyDocs.doc.create(docJson);
                         that.add(docName, doc);
                         document.body.appendChild(doc.buildNode());

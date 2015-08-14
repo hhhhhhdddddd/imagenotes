@@ -42,13 +42,29 @@ familyDocs.ajax = (function() {
             httpRequest.send();
         },
 
-        getDocuments : function(iterator, processElement, onFinished) {
-            this.processIterator(iterator, _service.getdocument, "docname", function getValue(docName) {
+        getDocuments : function(elements, processElement, onFinished) {
+            this.processIterator(elements, _service.getdocument, "docname", function getValue(docName) {
                 return docName;
             }, processElement, onFinished);
         },
 
-        processIterator : function(iterator, service, name, getValue, processElement, onFinished) {
+        processIterator : function(elements, service, name, getValue, processElement, onFinished) {
+
+            function createIterator(anArray) {
+                var iterator = Object.create(null);
+                iterator.position = 0;
+                iterator.list = anArray;
+
+                iterator.hasNext = function() {
+                    return this.position < this.list.length;
+                };
+                
+                iterator.next = function() {
+                    return this.list[this.position++];
+                };
+
+                return iterator;
+            }
 
             function processIteratorAux() {
                 if (! iterator.hasNext()) {
@@ -69,6 +85,7 @@ familyDocs.ajax = (function() {
                 });
             }
 
+            var iterator = createIterator(elements);
             processIteratorAux();
         }
     };
