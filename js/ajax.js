@@ -1,7 +1,7 @@
 familyDocs.ajax = (function() {
 
     // var _source = "http://canevorepa.free.fr/familydocs/"; // prod
-    var _source = "http://localhost/familydocsprod/"; // local
+    var _source = "http://localhost/imagenotes/"; // local
     var _service = {
         getDocumentsNames : "getdocumentnames.php",
         getdocument : "getdocument.php"
