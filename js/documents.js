@@ -32,14 +32,6 @@ familyDocs.documents = (function() {
                 }, function onFinished() {
                     console.log("loadFromDatabase - Finished: ajax.getAllDocumentsNames");
                 });
-                /////////////////
-                // HD_.Ajax.chainRequests("GET", urls, function onSuccess(request, responseText) {
-                //     var reqval = _findRequestValue(request);
-                //     console.log("reqval: " + reqval);
-
-                //     processElement(reqval, responseText);
-                // }, onFinished, null);
-                
             };
 
             return documents;
