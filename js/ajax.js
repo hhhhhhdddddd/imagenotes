@@ -9,7 +9,7 @@ familyDocs.ajax = (function() {
         getdocument : "getdocument.php"
     };
 
-    function _buildGetValueRequest(service, name, value) {
+    function _buildGetValueUrl(service, name, value) {
         return _source + service + "?" + name + "=" + value;
     }
 
@@ -30,7 +30,7 @@ familyDocs.ajax = (function() {
         getDocuments : function(imgNames, processElement, onFinished) {
             var urls = [];
             imgNames.forEach(function(imgNames) {
-                var request = _buildGetValueRequest(_service.getdocument, "docname", imgNames);
+                var request = _buildGetValueUrl(_service.getdocument, "docname", imgNames);
                 urls.push(request);
             });
 
