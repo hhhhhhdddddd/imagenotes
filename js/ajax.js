@@ -16,12 +16,12 @@ familyDocs.ajax = (function() {
             return request.split("=")[1];
         },
 
-        buildGetRequest : function(service) {
+        buildUrl : function(service) {
             return _source + service;
         },
 
         getDocumentsNames : function(onSuccess, onError, onFinished) {
-            this.getRequest(familyDocs.ajax.buildGetRequest(_service.getDocumentsNames), onSuccess, onError, onFinished);
+            this.getRequest(familyDocs.ajax.buildUrl(_service.getDocumentsNames), onSuccess, onError, onFinished);
         },
 
         getRequest : function(url, onSuccess, onError, onFinished) {
