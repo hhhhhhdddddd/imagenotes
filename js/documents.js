@@ -18,7 +18,7 @@ familyDocs.documents = (function() {
 
             documents.loadFromDatabase = function() {
                 var that = this;
-                familyDocs.ajax.getDocumentsNames(function onSuccess(responseText) {
+                familyDocs.ajax.getAllDocumentsNames(function onSuccess(responseText) {
                     var docNames = responseText.split(",");
                     familyDocs.ajax.getDocuments(docNames, function processElement(docName, docJson) {
                         var doc = familyDocs.doc.create(docJson);
@@ -28,10 +28,18 @@ familyDocs.documents = (function() {
                         // Rien
                     });
                 }, function onError() {
-                    console.log("loadFromDatabase - Error: ajax.getDocumentsNames");
+                    console.log("loadFromDatabase - Error: ajax.getAllDocumentsNames");
                 }, function onFinished() {
-                    console.log("loadFromDatabase - Finished: ajax.getDocumentsNames");
+                    console.log("loadFromDatabase - Finished: ajax.getAllDocumentsNames");
                 });
+                /////////////////
+                // HD_.Ajax.chainRequests("GET", urls, function onSuccess(request, responseText) {
+                //     var reqval = _findRequestValue(request);
+                //     console.log("reqval: " + reqval);
+
+                //     processElement(reqval, responseText);
+                // }, onFinished, null);
+                
             };
 
             return documents;

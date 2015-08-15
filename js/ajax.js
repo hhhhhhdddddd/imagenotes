@@ -5,7 +5,7 @@ familyDocs.ajax = (function() {
         "http://canevorepa.free.fr/imagenotes/";
 
     var _service = {
-        getDocumentsNames : "getdocumentnames.php",
+        getAllDocumentsNames : "getalldocumentnames.php",
         getdocument : "getdocument.php"
     };
 
@@ -23,8 +23,8 @@ familyDocs.ajax = (function() {
 
     return {
 
-        getDocumentsNames : function(onSuccess, onError, onFinished) {
-            HD_.Ajax.makeRequest('GET', _buildUrl(_service.getDocumentsNames), onSuccess, onError, onFinished);
+        getAllDocumentsNames : function(onSuccess, onError, onFinished) {
+            HD_.Ajax.makeRequest('GET', _buildUrl(_service.getAllDocumentsNames), onSuccess, onError, onFinished);
         },
 
         getDocuments : function(imgNames, processElement, onFinished) {
