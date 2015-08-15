@@ -47,14 +47,14 @@ familyDocs.ajax = (function() {
         },
 
         getDocuments : function(imgNames, processElement, onFinished) {
-            var requests = [];
+            var urls = [];
             imgNames.forEach(function(imgNames) {
                 var request = familyDocs.ajax.buildGetValueRequest(_service.getdocument, "docname", imgNames);
-                requests.push(request);
+                urls.push(request);
                 console.log("req: " + request);
             });
 
-            HD_.Ajax.chainRequests(requests, function onSuccess(request, responseText) {
+            HD_.Ajax.chainRequests("GET", urls, function onSuccess(request, responseText) {
                 var reqval = familyDocs.ajax.findRequestValue(request);
                 console.log("reqval: " + reqval);
 
