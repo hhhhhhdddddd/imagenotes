@@ -21,29 +21,7 @@ familyDocs.ajax = (function() {
         },
 
         getDocumentsNames : function(onSuccess, onError, onFinished) {
-            this.getRequest(familyDocs.ajax.buildUrl(_service.getDocumentsNames), onSuccess, onError, onFinished);
-        },
-
-        getRequest : function(url, onSuccess, onError, onFinished) {
-            // Instances of XMLHttpRequest can make an HTTP request to the server.
-            var httpRequest = new XMLHttpRequest();
-
-            // Tells the HTTP request object which JavaScript function will handle processing the response. 
-            httpRequest.onreadystatechange = function responseHandler() {
-                if (httpRequest.readyState === 4) {
-                    if (httpRequest.status === 200) {
-                        onSuccess(httpRequest.responseText);
-                        onFinished();
-                    } else {
-                        onError();
-                        onFinished();
-                    }
-                }
-            };
-
-            // Actually make the request.
-            httpRequest.open('GET', url);
-            httpRequest.send();
+            HD_.Ajax.makeRequest('GET', familyDocs.ajax.buildUrl(_service.getDocumentsNames), onSuccess, onError, onFinished);
         },
 
         getDocuments : function(imgNames, processElement, onFinished) {
