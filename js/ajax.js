@@ -54,52 +54,12 @@ familyDocs.ajax = (function() {
                 console.log("req: " + request);
             });
 
-            this.chainRequests(requests, function onSuccess(request, responseText) {
+            HD_.Ajax.chainRequests(requests, function onSuccess(request, responseText) {
                 var reqval = familyDocs.ajax.findRequestValue(request);
                 console.log("reqval: " + reqval);
 
                 processElement(reqval, responseText);
             }, onFinished, null);
-        },
-
-        chainRequests : function(requests, onSuccess, onFinished, onError) {
-
-            function createIterator(anArray) {
-                var iterator = Object.create(null);
-                iterator.position = 0;
-                iterator.list = anArray;
-
-                iterator.hasNext = function() {
-                    return this.position < this.list.length;
-                };
-                
-                iterator.next = function() {
-                    return this.list[this.position++];
-                };
-
-                return iterator;
-            }
-
-            function chainRequestsAux() {
-                if (! iterator.hasNext()) {
-                    onFinished();
-                    return;
-                }
-
-                var request = iterator.next();
-                familyDocs.ajax.getRequest(request, function fullOnSuccess(responseText) {
-                    onSuccess(request, responseText);
-
-                    chainRequestsAux();
-                }, function onError() {
-                    console.log("_chainRequests - Ajax Error: " + request);
-                }, function onFinished() {
-
-                });
-            }
-
-            var iterator = createIterator(requests);
-            chainRequestsAux();
         }
     };
 })();
