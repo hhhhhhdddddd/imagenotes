@@ -34,7 +34,7 @@ familyDocs.ajax = (function() {
                 urls.push(request);
             });
 
-            HD_.Ajax.chainRequests("GET", urls, function onSuccess(request, responseText) {
+            HD_.Ajax.chainRequests("GET", urls, function onEachSuccess(request, responseText) {
                 var reqval = _findRequestValue(request);
                 processElement(reqval, responseText);
             }, onFinished, null);
