@@ -32,13 +32,10 @@ familyDocs.ajax = (function() {
             imgNames.forEach(function(imgNames) {
                 var request = _buildGetValueRequest(_service.getdocument, "docname", imgNames);
                 urls.push(request);
-                console.log("req: " + request);
             });
 
             HD_.Ajax.chainRequests("GET", urls, function onSuccess(request, responseText) {
                 var reqval = _findRequestValue(request);
-                console.log("reqval: " + reqval);
-
                 processElement(reqval, responseText);
             }, onFinished, null);
         }
