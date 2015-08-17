@@ -12,8 +12,17 @@ familyDocs.documents = (function() {
     }
 
     return {
-        create : function(mainPanel) {
+        create : function() {
             var documents = HD_.MapCollection.create();
+            documents._observers = [];
+
+            documents.addDocument = function(docName, doc) {
+                this.addElement(docName, doc);
+                this._observers.forEach(function(observer) {
+                    observer.onAddDocument(doc);
+                });
+                return doc;
+            };
 
             documents.loadFromDatabase = function() {
                 var that = this;
@@ -21,12 +30,7 @@ familyDocs.documents = (function() {
                     var docNames = responseText.split(",");
                     familyDocs.ajax.getDocuments(docNames, function processElement(docName, docJson) {
                         var doc = familyDocs.doc.create(docJson);
-                        that.addElement(docName, doc);
-                        mainPanel.addAndShow(familyDocs.docPanel.create(
-                            doc.getDescription(),
-                            doc.getImageSource(),
-                            doc.getThumbnailSource())
-                        );
+                        that.addDocument(docName, doc);
                     }, function onFinished() {
                         // Rien
                     }, function onError() {
@@ -42,6 +46,10 @@ familyDocs.documents = (function() {
                 }, function onFinished() {
                     console.log("loadFromDatabase - onFinished...");
                 });
+            };
+
+            documents.registerObserver = function(observer) {
+                this._observers.push(observer);
             };
 
             return documents;

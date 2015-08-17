@@ -10,7 +10,9 @@ var familyDocs = (function(){
 
             var mainPanel = familyDocs.mainPanel.create();
             document.body.appendChild(mainPanel.buildDomNode());
-            var docList = familyDocs.documents.create(mainPanel);
+            
+            var docList = familyDocs.documents.create();
+            docList.registerObserver(mainPanel);
             docList.loadFromDatabase();
         }
     };

@@ -1,4 +1,4 @@
-// build 20150817_134453
+// build 20150817_135241
 HD_ = (function() {
     return {};
 })();
@@ -14,6 +14,7 @@ HD_.ArrayCollection = (function() {
 
             collection.addElement = function(element) {
                 this._elements.push(element);
+                return element;
             };
 
             collection.eachElement = function(fun) {
