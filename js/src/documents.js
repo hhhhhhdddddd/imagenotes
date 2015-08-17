@@ -28,21 +28,18 @@ familyDocs.documents = (function() {
                 var that = this;
                 familyDocs.ajax.getAllDocumentsNames(function onSuccess(responseText) {
                     var docNames = responseText.split(",");
-                    familyDocs.ajax.getDocuments(docNames, function processElement(docName, docJson) {
+                    familyDocs.ajax.getDocuments(docNames, function onEverySuccess(docName, docJson) {
                         var doc = familyDocs.doc.create(docJson);
                         that.addDocument(docName, doc);
-                    }, function onFinished() {
+                    }, function onEveryFinished() {
                         // Rien
-                    }, function onError() {
+                    }, function onEveryError() {
                         // Rien
                     }, function onAllFinished() {
-                        console.log("loadFromDatabase - onAllFinished: ajax.getAllDocumentsNames...");
-                        that.eachElement(function(doc) {
-                            console.log(doc.getDescription());
-                        });
+                        // Rien
                     });
                 }, function onError() {
-                    console.log("loadFromDatabase - Error: ajax.getAllDocumentsNames");
+                    alert.log("loadFromDatabase - Error: ajax.getAllDocumentsNames");
                 }, function onFinished() {
                     console.log("loadFromDatabase - onFinished...");
                 });
