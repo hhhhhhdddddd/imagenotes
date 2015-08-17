@@ -1,4 +1,4 @@
-familyDocs.doc = (function() {
+imageNotes.doc = (function() {
 
     return {
         

@@ -1,17 +1,17 @@
-var familyDocs = (function(){
+var imageNotes = (function(){
 
     return {
         debugMode : HD_.Debug.isLocalHost(),
 
         init : function() {
-            if (familyDocs.debugMode) {
+            if (imageNotes.debugMode) {
                 HD_.Debug.persistentLocalWarnings();
             }
 
-            var mainPanel = familyDocs.mainPanel.create();
+            var mainPanel = imageNotes.mainPanel.create();
             document.body.appendChild(mainPanel.buildDomNode());
             
-            var docList = familyDocs.documents.create();
+            var docList = imageNotes.documents.create();
             docList.registerObserver(mainPanel);
             docList.loadFromDatabase();
         }

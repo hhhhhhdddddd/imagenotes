@@ -1,4 +1,4 @@
-familyDocs.docPanel = (function() {
+imageNotes.docPanel = (function() {
 
     return {
         create : function(description, imgSource, thumbnailSource) {

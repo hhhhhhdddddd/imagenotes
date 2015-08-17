@@ -7,7 +7,7 @@
 
         <script type='text/javascript' src='js/lib/hd_.js'></script>
         
-        <script type='text/javascript' src='js/src/familydocs.js'></script>
+        <script type='text/javascript' src='js/src/imagenotes.js'></script>
         <script type='text/javascript' src='js/src/ajax.js'></script>
         <script type='text/javascript' src='js/src/documents.js'></script>
         <script type='text/javascript' src='js/src/doc.js'></script>
@@ -20,7 +20,7 @@
     // http://stackoverflow.com/a/9899701
     (function() {
        // Initialization code here, the DOM is available here.
-       familyDocs.init();
+       imageNotes.init();
     })();
     </script>
 

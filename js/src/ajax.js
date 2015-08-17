@@ -1,6 +1,6 @@
-familyDocs.ajax = (function() {
+imageNotes.ajax = (function() {
 
-    var _source = familyDocs.debugMode ?
+    var _source = imageNotes.debugMode ?
         "http://localhost/imagenotes/" :
         "http://canevorepa.free.fr/imagenotes/";
 

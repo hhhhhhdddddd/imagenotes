@@ -1,4 +1,4 @@
-familyDocs.documents = (function() {
+imageNotes.documents = (function() {
 
     function _findContainers() {
         return document.getElementsByClassName("doccontainer");
@@ -26,10 +26,10 @@ familyDocs.documents = (function() {
 
             documents.loadFromDatabase = function() {
                 var that = this;
-                familyDocs.ajax.getAllDocumentsNames(function onSuccess(responseText) {
+                imageNotes.ajax.getAllDocumentsNames(function onSuccess(responseText) {
                     var docNames = responseText.split(",");
-                    familyDocs.ajax.getDocuments(docNames, function onEverySuccess(docName, docJson) {
-                        var doc = familyDocs.doc.create(docJson);
+                    imageNotes.ajax.getDocuments(docNames, function onEverySuccess(docName, docJson) {
+                        var doc = imageNotes.doc.create(docJson);
                         that.addDocument(docName, doc);
                     }, function onEveryFinished() {
                         // Rien
