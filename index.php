@@ -7,18 +7,13 @@
 
         <script type='text/javascript' src='js/lib/hd_.js'></script>
         
-        <script type='text/javascript' src='js/familydocs.js'></script>
-        <script type='text/javascript' src='js/ajax.js'></script>
-        <script type='text/javascript' src='js/documents.js'></script>
-        <script type='text/javascript' src='js/list.js'></script>
-        <script type='text/javascript' src='js/doc.js'></script>
-        <script type='text/javascript' src='js/doccomponent.js'></script>
-        <script type='text/javascript' src='js/action.js'></script>
-        <script type='text/javascript' src='js/docdescription.js'></script>
-        <script type='text/javascript' src='js/image.js'></script>
-        <script type='text/javascript' src='js/form.js'></script>
-        <script type='text/javascript' src='js/panels/mainpanel.js'></script>
-        <script type='text/javascript' src='js/panels/docpanel.js'></script>
+        <script type='text/javascript' src='js/src/familydocs.js'></script>
+        <script type='text/javascript' src='js/src/ajax.js'></script>
+        <script type='text/javascript' src='js/src/documents.js'></script>
+        <script type='text/javascript' src='js/src/list.js'></script>
+        <script type='text/javascript' src='js/src/doc.js'></script>
+        <script type='text/javascript' src='js/src/panels/mainpanel.js'></script>
+        <script type='text/javascript' src='js/src/panels/docpanel.js'></script>
     </head>
     <body>
 
