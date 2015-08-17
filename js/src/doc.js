@@ -3,26 +3,26 @@ familyDocs.doc = (function() {
     return {
         
         create : function(json) {
-            var fdocument = Object.create(null);
-            fdocument.jsonObject = JSON.parse(json);
+            var doc = Object.create(null);
+            doc.jsonObject = JSON.parse(json);
 
-            fdocument.getName = function() {
+            doc.getName = function() {
                 return this.jsonObject.name;
             };
 
-            fdocument.getDescription = function() {
+            doc.getDescription = function() {
                 return this.jsonObject.description;
             };
 
-            fdocument.getThumbnailSource = function() {
+            doc.getThumbnailSource = function() {
                 return this.jsonObject.thumbnailLocation;
             };
 
-            fdocument.getImageSource = function() {
+            doc.getImageSource = function() {
                 return this.jsonObject.imageLocation;
             };
 
-            return fdocument;
+            return doc;
         }
     };
 })();
