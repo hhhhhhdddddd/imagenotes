@@ -3,6 +3,7 @@
     <head>
         <title>Image notes</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" type="text/css" href="css/hd_reset.css">
 
         <script type='text/javascript' src='js/lib/hd_.js'></script>
         
@@ -16,6 +17,8 @@
         <script type='text/javascript' src='js/docdescription.js'></script>
         <script type='text/javascript' src='js/image.js'></script>
         <script type='text/javascript' src='js/form.js'></script>
+        <script type='text/javascript' src='js/panels/mainpanel.js'></script>
+        <script type='text/javascript' src='js/panels/docpanel.js'></script>
     </head>
     <body>
 

@@ -12,7 +12,7 @@ familyDocs.documents = (function() {
     }
 
     return {
-        create : function() {
+        create : function(mainPanel) {
             var documents = Object.create(null);
             familyDocs.list.init(documents);
 
@@ -23,14 +23,25 @@ familyDocs.documents = (function() {
                     familyDocs.ajax.getDocuments(docNames, function processElement(docName, docJson) {
                         var doc = familyDocs.doc.create(docJson);
                         that.add(docName, doc);
-                        document.body.appendChild(doc.buildNode());
+                        mainPanel.addAndShow(familyDocs.docPanel.create(
+                            doc.getDescription(),
+                            doc.getImageSource(),
+                            doc.getThumbnailSource())
+                        );
                     }, function onFinished() {
                         // Rien
+                    }, function onError() {
+                        // Rien
+                    }, function onAllFinished() {
+                        console.log("loadFromDatabase - onAllFinished: ajax.getAllDocumentsNames...");
+                        that.each(function(doc) {
+                            console.log(doc.getDescription());
+                        });
                     });
                 }, function onError() {
                     console.log("loadFromDatabase - Error: ajax.getAllDocumentsNames");
                 }, function onFinished() {
-                    console.log("loadFromDatabase - Finished: ajax.getAllDocumentsNames");
+                    console.log("loadFromDatabase - onFinished...");
                 });
             };
 

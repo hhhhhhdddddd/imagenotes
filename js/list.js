@@ -7,10 +7,6 @@ familyDocs.list = (function() {
             listWannabe._size = 0;
 
             listWannabe.add = function(key, element) {
-                if (this.initElement) {
-                    this.initElement(element);
-                }
-
                 this._data[key] = element;
                 this._size++;
             };

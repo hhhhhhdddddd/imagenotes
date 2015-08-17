@@ -8,7 +8,9 @@ var familyDocs = (function(){
                 HD_.Debug.persistentLocalWarnings();
             }
 
-            var docList = familyDocs.documents.create();
+            var mainPanel = familyDocs.mainPanel.create();
+            document.body.appendChild(mainPanel.buildDomNode());
+            var docList = familyDocs.documents.create(mainPanel);
             docList.loadFromDatabase();
         }
     };
