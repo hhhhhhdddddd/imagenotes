@@ -27,7 +27,7 @@ familyDocs.ajax = (function() {
             HD_.Ajax.makeRequest('GET', _buildUrl(_service.getAllDocumentsNames), onSuccess, onError, onFinished);
         },
 
-        getDocuments : function(imgNames, processElement, onFinished, onError, onAllFinished) {
+        getDocuments : function(imgNames, onEverySuccess, onFinished, onError, onAllFinished) {
             var urls = [];
             imgNames.forEach(function(imgNames) {
                 var request = _buildGetValueUrl(_service.getdocument, "docname", imgNames);
@@ -36,8 +36,8 @@ familyDocs.ajax = (function() {
 
             HD_.Ajax.chainRequests("GET", urls, function onEachSuccess(request, responseText) {
                 var reqval = _findRequestValue(request);
-                processElement(reqval, responseText);
-            }, onFinished, null, onAllFinished);
+                onEverySuccess(reqval, responseText);
+            }, onFinished, onError, onAllFinished);
         }
     };
 })();
