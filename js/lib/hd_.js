@@ -1,6 +1,65 @@
-// build 20150817_123743
+// build 20150817_134453
 HD_ = (function() {
     return {};
+})();
+HD_.ArrayCollection = (function() {
+
+    return {
+
+        create : function() {
+            var collection = Object.create(null);
+            collection._elements = [];
+
+            HD_._Collection.initCollection(collection);
+
+            collection.addElement = function(element) {
+                this._elements.push(element);
+            };
+
+            collection.eachElement = function(fun) {
+                this._elements.forEach(function(element) {
+                    fun(element);
+                });
+            };
+
+            return collection;
+        }
+    };
+})();
+HD_.MapCollection = (function() {
+
+    return {
+
+        create : function() {
+            var collection = Object.create(null);
+            collection._elements = {};
+
+            HD_._Collection.initCollection(collection);
+
+            collection.addElement = function(key, element) {
+                this._elements[ key ] = element;
+            };
+
+            collection.eachElement = function(fun) {
+                for (var propName in this._elements) {
+                    fun(this._elements[ propName ]);
+                }
+            };
+
+            return collection;
+        }
+    };
+})();
+HD_._Collection = (function() {
+
+    return {
+
+        initCollection : function(collection) {
+            collection.getElement =  function(key) {
+                return this._elements[ key ];
+            };
+        }
+    };
 })();
 HD_.Ajax = (function() {
 

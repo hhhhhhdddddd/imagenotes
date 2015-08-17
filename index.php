@@ -10,7 +10,6 @@
         <script type='text/javascript' src='js/src/familydocs.js'></script>
         <script type='text/javascript' src='js/src/ajax.js'></script>
         <script type='text/javascript' src='js/src/documents.js'></script>
-        <script type='text/javascript' src='js/src/list.js'></script>
         <script type='text/javascript' src='js/src/doc.js'></script>
         <script type='text/javascript' src='js/src/panels/mainpanel.js'></script>
         <script type='text/javascript' src='js/src/panels/docpanel.js'></script>

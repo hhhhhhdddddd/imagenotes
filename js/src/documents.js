@@ -13,8 +13,7 @@ familyDocs.documents = (function() {
 
     return {
         create : function(mainPanel) {
-            var documents = Object.create(null);
-            familyDocs.list.init(documents);
+            var documents = HD_.MapCollection.create();
 
             documents.loadFromDatabase = function() {
                 var that = this;
@@ -22,7 +21,7 @@ familyDocs.documents = (function() {
                     var docNames = responseText.split(",");
                     familyDocs.ajax.getDocuments(docNames, function processElement(docName, docJson) {
                         var doc = familyDocs.doc.create(docJson);
-                        that.add(docName, doc);
+                        that.addElement(docName, doc);
                         mainPanel.addAndShow(familyDocs.docPanel.create(
                             doc.getDescription(),
                             doc.getImageSource(),
@@ -34,7 +33,7 @@ familyDocs.documents = (function() {
                         // Rien
                     }, function onAllFinished() {
                         console.log("loadFromDatabase - onAllFinished: ajax.getAllDocumentsNames...");
-                        that.each(function(doc) {
+                        that.eachElement(function(doc) {
                             console.log(doc.getDescription());
                         });
                     });
