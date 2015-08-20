@@ -28,7 +28,7 @@ imageNotes.docPanel = (function() {
             var sourceSplit = imgSource.split("/");
             var title = sourceSplit[sourceSplit.length - 1];
             console.log("title: " + title);
-            var docPanel = HD_.VerticalPanel.create({name: "docpanel", title: title});
+            var docPanel = HD_.VerticalPanel.create({name: "docpanel"});
             docPanel.pushPanelElement(docElementsPanel);
             docPanel.pushPanelElement(buttonsPanel);
 
