@@ -12,6 +12,16 @@ imageNotes.docPanel = (function() {
                 }
             }));
 
+            buttonsPanel.pushPanelElement(HD_.PanelField.create({
+                name: "download",
+                type: "button",
+                innerLabel: "download",
+                handler : function() {
+                    var encodedImage = HD_.Data.encodeImage(imgSource);
+                    HD_.Download.saveEncodedData(imgSource);
+                }
+            }));
+
             var docElementsPanel = HD_.HorizontalPanel.create({name: "docelementspanel"});
             docElementsPanel.pushPanelElement(HD_.PanelField.create({
                 name: "imagepanel",
