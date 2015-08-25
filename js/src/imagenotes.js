@@ -19,25 +19,14 @@ var imageNotes = (function(){
 
             var mainPanel = imageNotes.mainPanel.create();
             var mainNode = mainPanel.buildDomNode();
-            document.body.appendChild(mainNode);
-            
+                        
             var docList = imageNotes.documents.create();
             docList.registerObserver(mainPanel);
             docList.loadFromDatabase();
 
-            HD_.TranslaterPanel.addTranslaterPanel(that[_translaterName], mainNode, function translationHandler(translationName) {
+            HD_.TranslaterPanel.addTranslaterPanel(that[_translaterName], mainPanel);
 
-                function refreshFieldTexts(panel) {
-                    panel.mapPanels(function(pan) {
-                        if (pan.refreshFieldTexts) {
-                            pan.refreshFieldTexts();
-                        }
-                    });
-                }
-
-                that.tr.setCurrentTranlsation(translationName);
-                refreshFieldTexts(mainPanel);
-            });
+            document.body.appendChild(mainNode);
         }
     };
 })();
