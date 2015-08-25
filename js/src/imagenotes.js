@@ -15,6 +15,8 @@ var imageNotes = (function(){
             HD_.Translater.setAppTrProperty(that, _translaterName, "fr", imageNotes.trKeys, [
                 {name: "en", translations: imageNotes.en},
                 {name: "fr", translations: imageNotes.fr},
+                {name: "中文(繁體)", translations: imageNotes.zhTw},
+                {name: "中文(簡體)", translations: imageNotes.zhCn},
             ]);
 
             var mainPanel = imageNotes.mainPanel.create();
