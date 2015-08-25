@@ -6,7 +6,9 @@ imageNotes.docPanel = (function() {
             buttonsPanel.pushPanelElement(HD_.PanelField.create({
                 name: "enlarge",
                 type: "button",
-                innerLabel: "Enlarge",
+                labelBuilder: function() {
+                    return imageNotes.tr.trKey('enlarge_cap');
+                },
                 handler : function() {
                     window.open(imgSource, "Image");
                 }
@@ -15,10 +17,15 @@ imageNotes.docPanel = (function() {
             buttonsPanel.pushPanelElement(HD_.PanelField.create({
                 name: "download",
                 type: "button",
-                innerLabel: "download",
+                labelBuilder: function() {
+                    return imageNotes.tr.trKey('download_cap');
+                },
                 handler : function() {
                     var encodedImage = HD_.Data.encodeImage(imgSource);
                     HD_.Download.saveEncodedData(imgSource);
+                },
+                tr : function(str) {
+                    return "tata";
                 }
             }));
 

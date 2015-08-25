@@ -9,6 +9,12 @@
         <script type='text/javascript' src='js/lib/hd_.js'></script>
         
         <script type='text/javascript' src='js/src/imagenotes.js'></script>
+
+        <!-- Traductions -->
+        <script type='text/javascript' src='js/src/tr/imagenotes.trkeys.js'></script>
+        <script type='text/javascript' src='js/src/tr/imagenotes.fr.js'></script>
+        <script type='text/javascript' src='js/src/tr/imagenotes.en.js'></script>
+        
         <script type='text/javascript' src='js/src/ajax.js'></script>
         <script type='text/javascript' src='js/src/documents.js'></script>
         <script type='text/javascript' src='js/src/doc.js'></script>
